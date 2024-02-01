@@ -11,3 +11,4 @@ kotlin-test-junit5 = { module = "org.jetbrains.kotlin:kotlin-test-junit5" }
 
 [plugins]
 jvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin" }
+pitest = { id = "info.solidsoft.pitest", version = "1.15.0" }

@@ -4,6 +4,7 @@ plugins {
     alias(libs.plugins.jvm)
     `java-library`
     jacoco
+    alias(libs.plugins.pitest)
 }
 
 repositories {
@@ -73,4 +74,15 @@ tasks.jacocoTestCoverageVerification {
             }
         }
     }
+}
+
+pitest {
+    targetClasses.set(setOf("com.guillaume.taffin.*"))
+    pitestVersion = "1.15.2" //not needed when a default PIT version should be used
+    threads = 4
+    outputFormats.set(setOf("XML", "HTML"))
+    timestampedReports = false
+    junit5PluginVersion = "1.2.1"
+    testStrengthThreshold.set(100)
+    mutationThreshold.set(100)
 }
