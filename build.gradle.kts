@@ -12,10 +12,15 @@ repositories {
 }
 
 dependencies {
+    implementation(libs.structurizr.client)
+
+
     testImplementation(libs.kotlin.test.junit5)
     testImplementation(libs.junit.jupiter.engine)
+    testImplementation(libs.junit.params)
     testRuntimeOnly(libs.junit.platform.launcher)
     testImplementation(libs.kotest.assertions)
+
 }
 
 java {
@@ -27,14 +32,14 @@ java {
 
 tasks.withType<JavaCompile>().configureEach {
     javaCompiler = javaToolchains.compilerFor {
-        languageVersion = JavaLanguageVersion.of(8)
+        languageVersion = JavaLanguageVersion.of(17)
         vendor.set(JvmVendorSpec.ADOPTIUM)
     }
 }
 
 tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile>().configureEach {
     compilerOptions {
-        jvmTarget = JvmTarget.JVM_1_8
+        jvmTarget = JvmTarget.JVM_17
     }
 }
 
@@ -85,4 +90,8 @@ pitest {
     junit5PluginVersion = "1.2.1"
     testStrengthThreshold.set(100)
     mutationThreshold.set(100)
+}
+
+tasks.register<Test>("unitTest") {
+    useJUnitPlatform()
 }
