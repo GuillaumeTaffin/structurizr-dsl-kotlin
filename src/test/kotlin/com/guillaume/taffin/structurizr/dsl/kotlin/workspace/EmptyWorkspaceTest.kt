@@ -42,8 +42,14 @@ class EmptyWorkspaceTest {
     fun `Should allow to set description from model`() {
         val workspace = workspace {
             description = "A bootiful workspace"
+
+            properties(
+                "toto" to "titi",
+                "tarte" to "pudding"
+            )
         }
 
         workspace.description shouldBe "A bootiful workspace"
     }
+
 }
