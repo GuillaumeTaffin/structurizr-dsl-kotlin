@@ -1,6 +1,7 @@
 package com.guillaume.taffin.structurizr.dsl.kotlin.workspace
 
 import com.structurizr.Workspace
+import com.structurizr.model.Model
 
 
 fun workspace(
@@ -11,4 +12,7 @@ fun workspace(
 
 fun Workspace.properties(vararg properties: Pair<String, String>) = properties.forEach {
     this.addProperty(it.first, it.second)
+}
+
+fun Workspace.model(bloc: Model.() -> Unit) {
 }
